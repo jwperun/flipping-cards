@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Flipping Cards</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div>
+<input type="text" placeholder="Enter question here" v-model=textField> 
+<input type="text" placeholder="Enter answer here" v-model=textField>
+<br>
+<input type="radio" id="history" value="history" v-model="picked">
+<label for="history">History</label>
+<input type="radio" id="science" value="science" v-model="picked">
+<label for="science">Science</label>
+<input type="radio" id="math" value="math" v-model="picked">
+<label for="math">Math</label>
+<br>
+<button v-on:click="submit">Submit</button>
+</div>
+
+<div id="flashcards-app">
+  
+  <div class="card" v-for="item in cards" v-on:click="flippingCard()">
+    <div class="top" v-bind:class="item.category"></div>
+    <div class="side1">
+      <h1>{{item.question}}</h1>
+    </div>
+<!--     In your template, remove the 'hide' class from the side1 and side2 elements. 'hide' class should be conditionally rendered through the 'flipped' value in the card -->
+    <div class="side2">
+      <div>
+      <h3>{{item.answer}}</h3>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
